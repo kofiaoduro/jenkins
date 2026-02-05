@@ -1,14 +1,14 @@
 pipeline {
-    agent any
+    agent { label 'docker-agent' }  // Use the label of your pre-configured agent
     stages {
         stage('Build') {
             steps {
-                echo "$GIT_BRANCH"
+                echo "Building branch: $GIT_BRANCH"
             }
         }
         stage('Docker Build') {
             steps {
-                sh(script: 'docker compose build')
+                sh(script: 'docker compose build')  // Run Docker Compose build on the agent
             }
         }
     }
