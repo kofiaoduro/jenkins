@@ -1,5 +1,10 @@
 pipeline {
-    agent { label 'docker-agent-docker' }  // Use the label of your pre-configured agent
+    agent { 
+        node {
+            label 'docker-agent-docker'
+            }
+      }
+
     stages {
         stage('Build') {
             steps {
